@@ -1,4 +1,6 @@
 # student.py
+with open("studentlist.csv", "w") as f:
+    f.write("Name,Roll,Grade\n") 
 
 def add_student(name, roll, grade):
     with open("students.txt", "a") as f:
@@ -29,3 +31,18 @@ def search_student(roll):
             print("Student not found.")
     except FileNotFoundError:
         print("No data available.")
+
+# Read from text file
+with open("students.txt", "r") as infile:
+    lines = infile.readlines()
+import csv
+
+# Write to CSV file
+with open("studentlist.csv", "w", newline='') as csvfile:
+    writer = csv.writer(csvfile)
+    writer.writerow(["Name", "Roll No", "Grade"])  # Header
+    for line in lines:
+        data = line.strip().split(",")
+        writer.writerow(data)
+
+print("✅ Data exported to studentlist.csv successfully!")

@@ -1,4 +1,38 @@
 # main.py
+  
+import tkinter as tk
+
+def add_student():
+    name = name_entry.get()
+    roll = roll_entry.get()
+    grade = grade_entry.get()
+    with open("students.txt", "a") as f:
+        f.write(f"{name},{roll},{grade}\n")
+    status_label.config(text="✅ Student Added!")
+
+# GUI Window
+root = tk.Tk()
+root.title("Student Manager")
+root.geometry("400x300")
+
+tk.Label(root, text="Name").pack()
+name_entry = tk.Entry(root)
+name_entry.pack()
+
+tk.Label(root, text="Roll No").pack()
+roll_entry = tk.Entry(root)
+roll_entry.pack()
+
+tk.Label(root, text="Grade").pack()
+grade_entry = tk.Entry(root)
+grade_entry.pack()
+
+tk.Button(root, text="Add Student", command=add_student).pack(pady=10)
+
+status_label = tk.Label(root, text="")
+status_label.pack()
+
+root.mainloop()
 
 import student
 
